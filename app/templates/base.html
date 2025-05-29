@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Limelight:400&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://public.codepenassets.com/css/reset-2.0.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upside_down.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full_moon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>Коты и анекдоты</title>
+</head>
+<body>
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
+<div class="footer">
+    <div class="cat">
+        <div class="paw"></div>
+        <div class="paw"></div>
+        <div class="shake">
+            <div class="tail"></div>
+            <div class="main">
+                <div class="head"></div>
+                <div class="body">
+                    <div class="leg"></div>
+                </div>
+                <div class="face">
+                    <div class="mustache_cont">
+                        <div class="mustache"></div>
+                        <div class="mustache"></div>
+                    </div>
+                    <div class="mustache_cont">
+                        <div class="mustache"></div>
+                        <div class="mustache"></div>
+                    </div>
+                    <div class="nose"></div>
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                    <div class="brow_cont">
+                        <div class="brow"></div>
+                        <div class="brow"></div>
+                    </div>
+                    <div class="brow_cont">
+                        <div class="brow"></div>
+                        <div class="brow"></div>
+                    </div>
+                    <div class="ear_l">
+                        <div class="inner"></div>
+                    </div>
+                    <div class="ear_r">
+                        <div class="outer"></div>
+                        <div class="inner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+<script src="{{ url_for('static', filename='js/full_moon.js') }}"></script>
+</html>

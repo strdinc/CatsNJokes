@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="firstScreen">
+        <div class="room">
+            <div class="window">
+                <div class="stars"></div>
+                <div class="star"></div>
+                <div id="moon" class="moon"></div>
+                <div class="cloud"></div>
+                <div class="eiffel-tower">
+                    <div class="platform"></div>
+                </div>
+                <div class="roof"></div>
+                <div class="bush"></div>
+            </div>
+            <div class="window-sill">
+                <div class="cat_moon">
+                    <div class="head_moon">
+                        <div class="eyes_moon"></div>
+                    </div>
+                    <div class="tail_moon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="center_container_jokes">
+        <div class="titleBlock">
+            <div class="titleCatsNJokes geologica-bold">КОТЫ<br>И АНЕКДОТЫ</div>
+            <div class="titleDownLine">
+                <a class="toLogin geologica-medium" href="{{ url_for('auth.login') }}">вход/регистрация</a>
+                <div class="authors geologica-light">ОТ СОЗДАТЕЛЕЙ<br>САМОУЧИТЕЛЯ ТАЙСКОГО<br>И НАВИГАТОРА С ШУТКАМИ</div>
+            </div>
+        </div>
+        <div class="CatNJokesContainer">
+            <script src="{{ url_for('static', filename='js/jokes.js') }}"></script>
+        </div>
+        <div class="buttonsBachForward">
+            <button class="{{ ' '.join(back_classes) }}" onclick="currentPage--; loadContent(currentPage); scrollToTop()">Назад</button>
+            <button class="{{ ' '.join(forward_classes) }}" onclick="currentPage++; loadContent(currentPage); scrollToTop()">Вперёд</button>
+        </div>
+
+
+
+    </div>
+{% endblock %}
