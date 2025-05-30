@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Профиль</h2>
+<p>Логин: {{ username }}</p>
+<p>Роль: {{ role }}</p>
+    <a href="{{ url_for('auth.logout') }}">Выйти</a>
+
+{% endblock %}
