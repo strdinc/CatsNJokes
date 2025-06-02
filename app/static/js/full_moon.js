@@ -23,4 +23,3 @@ if (diff < diffNew) {
 const MOON = document.getElementById("moon");
 const TYPE = document.getElementById("type");
 const COUNT = document.getElementById("count");
-MOON.classList.add(className);

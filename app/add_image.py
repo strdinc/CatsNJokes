@@ -15,7 +15,7 @@ with app.app_context():
     added_count = 0
 
     for filename in os.listdir(source_folder):
-        if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp')):
+        if filename.lower().endswith(('.jpg.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp')):
             src = os.path.join(source_folder, filename)
             dest = os.path.join(destination_folder, filename)
 

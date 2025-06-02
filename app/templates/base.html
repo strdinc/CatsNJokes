@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Limelight:400&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://public.codepenassets.com/css/reset-2.0.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Limelight:400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://public.codepenassets.com/css/reset-2.0.min.css">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/upside_down.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/full_moon.css') }}">
+    {% block styles %}{% endblock %}
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upside_down.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_profile.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="center_container">
+
+        <div class="leftColumn">
+            <a class="title geologica-bold" href="{{ url_for('main.index') }}">КОТЫ И АНЕКДОТЫ</a>
+
+            <div class="suggestCat">
+                <div class="suggestCatTitle geologica-regular">
+                    <form class="suggestCatForm" method="post" action="{{ url_for('auth.suggest_image') }}" enctype="multipart/form-data">
+                        <input type="file" id="catFileInput" name="cat_image" accept="image/*" hidden>
+                        <button type="button" id="customFileButton" class="suggestCatButton geologica-regular">выбрать</button><span id="fileNameLabel" class="geologica-regular" style="margin-left: 10px;">Файл не выбран</span>
+                        <button class="suggestCatSubmit geologica-medium" type="submit">отправить</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="suggestJoke">
+                <div class="suggestJokeTitle geologica-regular">
+                    <form class="suggestJokeForm" method="post">
+                        <input class="suggestJokeInput geologica-regular" type="text" name="text" placeholder="текст анекдота">
+                        <div class="categoryQ">
+                            <div class="categoryTitle">категория</div>
+                            <script src="{{ url_for('static', filename='js/categoryULIL.js') }}"></script>
+                            <div class="custom-select-container">
+                                <div class="selected-option">Выбрать категорию</div>
+                                <div class="options-list">
+                                    {% for cat in categories %}
+                                        <div class="option-item">{{ cat }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <button class="suggestCatSubmit geologica-medium" type="submit">отправить</button>
+                    </form>
+                </div>
+            </div>
+            <div class="suggestJoke"></div>
+        </div>
+
+        <div class="centerColumn"></div>
+
+        <div class="rightColumn"></div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/uploadCat.js') }}"></script>
+
+{% endblock %}
+
+
+
+
+<a href="{{ url_for('auth.logout') }}">Выйти</a>

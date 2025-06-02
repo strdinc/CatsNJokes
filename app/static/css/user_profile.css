@@ -1,0 +1,55 @@
+.center_container {
+    width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+
+.title {
+    font-size: 58px;
+    color: #352B53;
+    text-decoration: none;
+}
+
+.custom-select-container {
+    width: 250px;
+    position: relative;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+.selected-option {
+    background-color: #eee;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.options-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #aaa;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 999;
+    display: none;
+}
+
+.option-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.option-item:hover {
+    background-color: #f0f0f0;
+}
+
+.custom-select-container.open.options-list {
+    display: block;
+}

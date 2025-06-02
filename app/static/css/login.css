@@ -1,0 +1,98 @@
+.center_container {
+    width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer {
+    display: none;
+}
+
+.leftColumn {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 58px;
+    color: #352B53;
+    text-decoration: none;
+}
+
+.toCenter {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.log, .reg {
+    font-size: 62px;
+    color: #352B53;
+
+    margin-bottom: 50px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login, .password, .name {
+    width: 100%;
+    font-size: 33px;
+    color: #352B53;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid #352B53;
+}
+
+.login::placeholder, .password::placeholder, .name::placeholder {
+    color: #352B53;
+}
+
+.submitLogin {
+    width: 142px;
+    font-size: 30px;
+    padding: 5px 20px;
+    border: 2px solid #352B53;
+    background-color: transparent;
+    border-radius: 40px;
+    margin-right: 0;
+    margin-left: auto;
+    margin-bottom: 30px;
+    color: #352B53;
+}
+
+.submitRegister {
+    width: 360px;
+    font-size: 30px;
+    padding: 5px 20px;
+    border: 2px solid #352B53;
+    background-color: transparent;
+    border-radius: 40px;
+    margin-right: 0;
+    margin-left: auto;
+    margin-bottom: 30px;
+    color: #352B53;
+}
+
+.NoAccountQ, .YesAccountQ {
+    font-size: 20px;
+    color: #604e94;
+}
+
+.rightColumn{
+    width: 70%;
+    height: 100vh;
+    padding: 200px 50px 50px;
+    box-sizing: border-box;
+    align-content: center;
+}
+

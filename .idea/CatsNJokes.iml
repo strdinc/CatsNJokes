@@ -9,6 +9,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="reset-2.0" level="application" />
+    <orderEntry type="library" name="moment.js" level="application" />
     <orderEntry type="library" name="moment.js" level="application" />
   </component>
   <component name="TemplatesService">
