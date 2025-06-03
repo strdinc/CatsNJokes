@@ -10,38 +10,38 @@
 
         <div class="leftColumn">
             <a class="title geologica-bold" href="{{ url_for('main.index') }}">КОТЫ И АНЕКДОТЫ</a>
-
-            <div class="suggestCat">
-                <div class="suggestCatTitle geologica-regular">
-                    <form class="suggestCatForm" method="post" action="{{ url_for('auth.suggest_image') }}" enctype="multipart/form-data">
-                        <input type="file" id="catFileInput" name="cat_image" accept="image/*" hidden>
-                        <button type="button" id="customFileButton" class="suggestCatButton geologica-regular">выбрать</button><span id="fileNameLabel" class="geologica-regular" style="margin-left: 10px;">Файл не выбран</span>
-                        <button class="suggestCatSubmit geologica-medium" type="submit">отправить</button>
-                    </form>
-                </div>
+            <div class="toCenter">
+                <div class="suggestCat">
+                <div class="suggestCatTitle geologica-regular">Предложить изображение</div>
+                <form class="suggestCatForm" method="post" action="{{ url_for('auth.suggest_image') }}" enctype="multipart/form-data">
+                    <input type="file" id="catFileInput" name="cat_image" accept="image/*" hidden>
+                    <button type="button" id="customFileButton" class="suggestCatButton geologica-regular">выбрать</button>
+                    <span id="fileNameLabel" class="fileNameLabel geologica-regular">файл не выбран</span>
+                    <button class="suggestCatSubmit geologica-medium" type="submit">отправить</button>
+                </form>
             </div>
 
             <div class="suggestJoke">
-                <div class="suggestJokeTitle geologica-regular">
-                    <form class="suggestJokeForm" method="post">
-                        <input class="suggestJokeInput geologica-regular" type="text" name="text" placeholder="текст анекдота">
-                        <div class="categoryQ">
-                            <div class="categoryTitle">категория</div>
-                            <script src="{{ url_for('static', filename='js/categoryULIL.js') }}"></script>
-                            <div class="custom-select-container">
-                                <div class="selected-option">Выбрать категорию</div>
-                                <div class="options-list">
-                                    {% for cat in categories %}
-                                        <div class="option-item">{{ cat }}</div>
-                                    {% endfor %}
-                                </div>
+                <div class="suggestJokeTitle geologica-regular">Предложить анекдот</div>
+                <form class="suggestJokeForm" method="post">
+                    <script src="{{ url_for('static', filename='js/autoresize.js') }}"></script>
+                    <textarea class="suggestJokeInput geologica-regular" name="text" placeholder="текст анекдота" oninput="autoResize(this)"></textarea>
+                    <div class="categoryQ">
+                        <div class="categoryTitle geologica-medium">категория</div>
+                        <div class="custom-select-container">
+                            <div class="selected-option geologica-medium">Выбрать категорию</div>
+                            <div class="options-list">
+                                {% for cat in categories %}
+                                    <div class="option-item geologica-regular">{{ cat }}</div>
+                                {% endfor %}
                             </div>
                         </div>
-                        <button class="suggestCatSubmit geologica-medium" type="submit">отправить</button>
-                    </form>
-                </div>
+                    </div>
+                    <button class="suggestCatSubmit geologica-medium" type="submit">отправить</button>
+                </form>
             </div>
             <div class="suggestJoke"></div>
+            </div>
         </div>
 
         <div class="centerColumn"></div>
@@ -51,7 +51,7 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/uploadCat.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='js/categoryULIL.js') }}"></script>
 {% endblock %}
 
 

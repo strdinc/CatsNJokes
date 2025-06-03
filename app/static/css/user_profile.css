@@ -1,4 +1,5 @@
 .center_container {
+    height: 120vh;
     width: 1920px;
     margin: 0 auto;
     display: flex;
@@ -12,6 +13,84 @@
     text-decoration: none;
 }
 
+.leftColumn, .centerColumn, .rightColumn {
+    width: 416px;
+}
+
+.toCenter {
+    height: 1130px;
+    align-content: center;
+}
+
+.suggestCat, .suggestJoke {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.suggestCatForm, .suggestJokeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.suggestCatButton {
+    width: 416px;
+    height: 46px;
+    color: #352B53;
+    font-size: 21px;
+    background-color: transparent;
+    border: 2px solid #352B53;
+    border-radius: 11px;
+}
+
+.fileNameLabel{
+    font-size: 20px;
+    color: #352B53;
+}
+
+.suggestCatSubmit {
+    width: 120px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: 0;
+    background-color: white;
+    color: #352B53;
+    border: none;
+}
+
+.suggestCatTitle, .suggestJokeTitle {
+    font-size: 21px;
+    color: #352B53;
+}
+
+.suggestJokeInput {
+    font-size: 20px;
+    padding: 10px;
+    color: #352B53;
+    background-color: white;
+    border: 2px solid #352B53;
+    border-radius: 11px;
+}
+
+.suggestJokeInput::placeholder {
+    color: #352B53;
+}
+
+.categoryQ {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryTitle {
+    font-size: 20px;
+    text-align: center;
+    color: #352B53;
+}
+
 .custom-select-container {
     width: 250px;
     position: relative;
@@ -20,22 +99,24 @@
 }
 
 .selected-option {
-    background-color: #eee;
+    background-color: white;
+    color: #352B53;
     padding: 10px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
+    border: 2px solid #352B53;
+    border-radius: 11px;
     cursor: pointer;
 }
 
 .options-list {
     position: absolute;
+    margin-top: 10px;
     top: 100%;
     left: 0;
     right: 0;
     background-color: white;
-    border: 1px solid #aaa;
-    border-top: none;
-    max-height: 200px;
+    border: 2px solid #352B53;
+    border-radius: 11px;
+    max-height: 500px;
     overflow-y: auto;
     z-index: 999;
     display: none;
@@ -47,9 +128,10 @@
 }
 
 .option-item:hover {
-    background-color: #f0f0f0;
+    background-color: #352B53;
+    color: white;
 }
 
-.custom-select-container.open.options-list {
+.custom-select-container.open .options-list {
     display: block;
 }
