@@ -23,7 +23,7 @@
 
             <div class="suggestJoke">
                 <div class="suggestJokeTitle geologica-regular">Предложить анекдот</div>
-                <form class="suggestJokeForm" method="post">
+                <form class="suggestJokeForm" method="post" action="{{ url_for('auth.suggest_joke') }}">
                     <script src="{{ url_for('static', filename='js/autoresize.js') }}"></script>
                     <textarea class="suggestJokeInput geologica-regular" name="text" placeholder="текст анекдота" oninput="autoResize(this)"></textarea>
                     <div class="categoryQ">
@@ -37,24 +37,43 @@
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="category" id="selected-category">
                     <button class="suggestCatSubmit geologica-medium" type="submit">отправить</button>
                 </form>
             </div>
-            <div class="suggestJoke"></div>
             </div>
         </div>
 
-        <div class="centerColumn"></div>
+        <div class="centerColumn">
+            <div class="toBottom">
+                <div class="AccountTitle geologica-bold">ЛИЧНЫЙ КАБИНЕТ</div>
+                <div class="LogOut"><a class="LogOutA geologica-regular" href="{{ url_for('auth.logout') }}">выйти</a></div>
+            </div>
+            <div class="statistics">
+                <div class="statisticsTitle geologica-bold">Статистика</div>
+                <div class="statisticsJokesTitle geologica-medium">Предложенные анекдоты</div>
+                <div class="statisticsJokes" id="statisticsJokes"></div>
+                <div class="joke-navigation">
+                    <button class="jokes-prev geologica-medium" style="display: none;"><img src="../static/svg/previousArrow.svg" class="previousArrow"></button>
+                    <button class="jokes-next geologica-medium" style="display: none;"><img src="../static/svg/nextArrow.svg" class="nextArrow"></button>
+                </div>
+            </div>
+        </div>
 
-        <div class="rightColumn"></div>
+        <div class="rightColumn">
+            <div class="nothing"></div>
+            <div class="statisticsCatsTitle geologica-medium">Предложенные изображения</div>
+            <div class="statisticsCats" id="statisticsCats"></div>
+            <div class="pagination-buttons">
+                <button id="catsPrevPage" class="catsPrevPage" style="display: none;"><img src="../static/svg/previousArrow.svg" class="previousArrow"></button>
+                <button id="catsNextPage" class="catsNextPage" style="display: none;"><img src="../static/svg/nextArrow.svg" class="nextArrow"></button>
+            </div>
+        </div>
 
     </div>
 
     <script src="{{ url_for('static', filename='js/uploadCat.js') }}"></script>
     <script src="{{ url_for('static', filename='js/categoryULIL.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/load_jokes.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/load_cats.js') }}"></script>
 {% endblock %}
-
-
-
-
-<a href="{{ url_for('auth.logout') }}">Выйти</a>

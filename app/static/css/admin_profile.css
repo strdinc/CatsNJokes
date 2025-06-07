@@ -1,0 +1,36 @@
+.suggestJoke {
+    border: 1px solid #ccc;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    background: #fafafa;
+}
+
+.suggestJoke .firstLine {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.suggestJoke .buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.allow, .denied {
+    cursor: pointer;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+}
+
+.allow {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.denied {
+    background-color: #f44336;
+    color: white;
+}

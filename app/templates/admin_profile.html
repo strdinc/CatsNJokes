@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_profile.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="center_container">
+
+        <div class="topLine">
+            <a class="title geologica-bold" href="{{ url_for('main.index') }}">КОТЫ И АНЕКДОТЫ.АДМИН</a>
+            <div class="AccountTitle geologica-bold">ЛИЧНЫЙ КАБИНЕТ</div>
+            <div class="LogOut"><a class="LogOutA geologica-regular" href="{{ url_for('auth.logout') }}">выйти</a></div>
+        </div>
+
+        <div class="centerLine">
+            <div class="suggestJokes geologica-semibold">Предложенные анекдоты</div>
+            <div class="suggestCats geologica-semibold">Предложенные изображения</div>
+        </div>
+
+        <div class="leftColumn" id="leftColumn">
+            <div class="suggestJoke">
+                <div class="firstLine">
+                    <div class="category geologica-semibold"></div>
+                    <div class="userID geologica-semibold">пользователь id2</div>
+                </div>
+                <div class="text geologica-regular"></div>
+                <div class="buttons">
+                    <button class="allow geologica-regular"></button>
+                    <button class="denied geologica-medium"></button>
+                </div>
+            </div>
+        </div>
+        <div class="rightColumn" id="rightColumn"></div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/suggestedJokes.js') }}"></script>
+
+{% endblock %}

@@ -5,16 +5,34 @@
     display: flex;
     flex-direction: row;
     padding: 50px;
+    justify-content: space-between;
 }
 
 .title {
+    width: 100%;
     font-size: 58px;
     color: #352B53;
     text-decoration: none;
 }
 
-.leftColumn, .centerColumn, .rightColumn {
+.previousArrow, .nextArrow {
+    width: 20px;
+}
+
+.jokes-prev, .jokes-next,
+.catsPrevPage. .catsNextPage {
+    background-color: white;
+    color: transparent;
+}
+
+.leftColumn {
     width: 416px;
+}
+
+.centerColumn, .rightColumn {
+    width: 593px;
+    display: flex;
+    flex-direction: column;
 }
 
 .toCenter {
@@ -135,3 +153,140 @@
 .custom-select-container.open .options-list {
     display: block;
 }
+
+.toBottom {
+    width: 100%;
+    height: 131px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.AccountTitle {
+    margin-bottom: 10px;
+    margin-top: auto;
+    color: #352B53;
+    font-size: 38px;
+}
+
+.LogOut {
+    height: 38px;
+    width: 193px;
+    margin-bottom: 10px;
+    margin-top: auto;
+    background-color: #352B53;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LogOutA {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.statistics {
+    margin-top: 47px;
+    display: flex;
+    flex-direction: column;
+}
+
+.statisticsTitle {
+    font-size: 48px;
+    color: #352B53;
+}
+
+.statisticsJokesTitle, .statisticsCatsTitle {
+    font-size: 34px;
+    color: #352B53;
+    margin-top: 10px;
+}
+
+.statisticsCatsTitle {
+    margin-bottom: 20px;
+}
+
+.statisticsJokes {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.suggestedJoke {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.status {
+    font-size: 20px;
+    color: #352B53;
+}
+
+.text {
+    font-size: 20px;
+    color: #352B53;
+}
+
+.nothing {
+    width: 100%;
+    height: 226px;
+}
+
+.statisticsCatsContainer {
+    display: flex;
+    flex-direction: column;
+    height: 600px; /* задаем фиксированную высоту */
+    overflow: hidden;
+    position: relative;
+}
+
+.statisticsCats {
+    column-count: 2;
+    column-gap: 16px;
+    height: auto;
+    overflow: hidden;
+}
+
+.suggestedCat {
+    margin-bottom: 16px;
+    break-inside: avoid;
+    border-radius: 12px;
+}
+
+.suggestedCat img.image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.pagination-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pagination-buttons button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+

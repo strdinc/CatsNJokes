@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.models import Joke
+from app.models import Joke, SuggestedJoke
 import os
 from werkzeug.utils import secure_filename
 from app import db
@@ -7,9 +7,10 @@ from app.models import SuggestedCat, User
 from flask import request, redirect, url_for, session, flash, render_template
 from . import auth
 import uuid
+from flask import jsonify
 
-UPLOAD_FOLDER = 'static/uploads'
-ALLOWED_EXTENSIONS = {'png', 'jpg.jpg', 'jpeg', 'gif'}
+UPLOAD_FOLDER = 'app/static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -67,13 +68,15 @@ def suggest_image():
         if not safe_name:
             safe_name = f"{uuid.uuid4().hex}.{extension}"
 
-        save_path = os.path.join(UPLOAD_FOLDER, safe_name)
         os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+        save_path = os.path.join(UPLOAD_FOLDER, safe_name)
         file.save(save_path)
+
+        relative_path = os.path.join('uploads', safe_name).replace('\\', '/')
 
         user = User.query.filter_by(login=session['user']).first()
         new_image = SuggestedCat(
-            image_path=save_path,
+            image_path=relative_path,
             user_id=user.id,
             status='модерация'
         )
@@ -85,6 +88,118 @@ def suggest_image():
         flash('Файл не выбран или имеет недопустимый формат.', 'error')
 
     return redirect(url_for('auth.profile'))
+
+
+@auth.route('/suggest_joke', methods=['POST'])
+def suggest_joke():
+    if 'user' not in session:
+        return redirect(url_for('auth.login'))
+
+    joke_text = request.form.get('text')
+    joke_category = request.form.get('category')
+
+    if not joke_text or not joke_category:
+        flash('Необходимо заполнить текст анекдота и выбрать категорию.', 'error')
+        return redirect(url_for('auth.profile'))
+
+    user = User.query.filter_by(login=session['user']).first()
+    if not user:
+        flash('Пользователь не найден.', 'error')
+        return redirect(url_for('auth.login'))
+
+    new_joke = SuggestedJoke(
+        text=joke_text,
+        category=joke_category,
+        status='модерация',
+        user_id=user.id
+    )
+    db.session.add(new_joke)
+    db.session.commit()
+
+    flash('Анекдот отправлен на модерацию!', 'success')
+    return redirect(url_for('auth.profile'))
+
+@auth.route('/get_suggested_jokes')
+def get_suggested_jokes():
+    if 'user' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    user = User.query.filter_by(login=session['user']).first()
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    jokes = (
+        SuggestedJoke.query
+        .filter_by(user_id=user.id)
+        .order_by(SuggestedJoke.id.desc())
+        .all()
+    )
+
+    jokes_data = [
+        {
+            'status': j.status,
+            'text': j.text
+        }
+        for j in jokes
+    ]
+
+    return jsonify({'jokes': jokes_data})
+
+
+@auth.route('/get_suggested_cats')
+def get_suggested_cats():
+    if 'user' not in session:
+        return jsonify({'cats': []})
+
+    page = request.args.get('page', 1, type=int)
+    per_page = 4
+    user = User.query.filter_by(login=session['user']).first()
+
+    cats_paginated = SuggestedCat.query.filter_by(user_id=user.id) \
+        .order_by(SuggestedCat.id.desc()) \
+        .paginate(page=page, per_page=per_page, error_out=False)
+
+    cats_data = [
+        {
+            'status': cat.status,
+            'image_path': cat.image_path.replace('static/', '').replace('\\', '/')
+        }
+        for cat in cats_paginated.items
+    ]
+
+    return jsonify({'cats': cats_data})
+
+# Получить все анекдоты на модерации
+@auth.route('/admin/get_suggested_jokes')
+def get_admin_suggested_jokes():
+    jokes = SuggestedJoke.query.filter_by(status='модерация').all()
+    data = [{
+        'id': joke.id,
+        'text': joke.text,
+        'category': joke.category,
+        'user_id': joke.user_id
+    } for joke in jokes]
+    return jsonify(data)
+
+
+# Отклонить анекдот
+@auth.route('/admin/deny_joke/<int:joke_id>', methods=['POST'])
+def deny_joke(joke_id):
+    joke = SuggestedJoke.query.get_or_404(joke_id)
+    joke.status = 'отклонён'
+    db.session.commit()
+    return jsonify({'success': True})
+
+
+# Принять анекдот и перенести в основную таблицу
+@auth.route('/admin/approve_joke/<int:joke_id>', methods=['POST'])
+def approve_joke(joke_id):
+    joke = SuggestedJoke.query.get_or_404(joke_id)
+    new_joke = Joke(text=joke.text, category=joke.category)
+    db.session.add(new_joke)
+    joke.status = 'принят'
+    db.session.commit()
+    return jsonify({'success': True})
 
 @auth.route('/logout')
 def logout():

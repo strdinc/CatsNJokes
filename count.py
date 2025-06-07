@@ -1,6 +1,6 @@
 import os
 
-EXCLUDED_EXTENSIONS = {'.csv', '.png', '.jpg.jpg', '.jpeg', '.gif', '.webp', '.ico', '.bmp', '.svg', '.pdf', '.zip', '.exe'}
+EXCLUDED_EXTENSIONS = {'.csv', '.png', '.jpg', '.jpeg', '.gif', '.webp', '.ico', '.bmp', '.svg', '.pdf', '.zip', '.exe'}
 
 def count_lines_with_logging(directory):
     total_with_css = 0

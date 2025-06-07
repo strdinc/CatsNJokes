@@ -21,3 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+document.querySelectorAll('.option-item').forEach(item => {
+    item.addEventListener('click', function () {
+        const selectedText = this.textContent;
+        document.querySelector('.selected-option').textContent = selectedText;
+        document.getElementById('selected-category').value = selectedText;
+        document.querySelector('.options-list').style.display = 'none';
+    });
+});
+
+    document.querySelector('.selected-option').addEventListener('click', function () {
+    const list = document.querySelector('.options-list');
+    list.style.display = (list.style.display === 'block') ? 'none' : 'block';
+});
+
