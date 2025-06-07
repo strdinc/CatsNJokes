@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.models import Joke, SuggestedJoke
+from app.models import Joke, SuggestedJoke, Image
 import os
 from werkzeug.utils import secure_filename
 from app import db
@@ -8,6 +8,7 @@ from flask import request, redirect, url_for, session, flash, render_template
 from . import auth
 import uuid
 from flask import jsonify
+import shutil
 
 UPLOAD_FOLDER = 'app/static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
@@ -198,6 +199,46 @@ def approve_joke(joke_id):
     new_joke = Joke(text=joke.text, category=joke.category)
     db.session.add(new_joke)
     joke.status = 'принят'
+    db.session.commit()
+    return jsonify({'success': True})
+
+@auth.route('/admin/get_suggested_cats')
+def admin_get_suggested_cats():
+    cats = SuggestedCat.query.filter_by(status='модерация').all()
+    result = []
+    for cat in cats:
+        result.append({
+            'id': cat.id,
+            'image_path': cat.image_path,
+            'user_id': cat.user_id
+        })
+    return jsonify(result)
+
+@auth.route('/moderate_cat', methods=['POST'])
+def moderate_cat():
+    data = request.json
+    cat_id = data['id']
+    action = data['action']  # "принять" или "отклонить"
+
+    cat = SuggestedCat.query.get_or_404(cat_id)
+
+    if action == 'принять':
+        cat.status = 'принят'
+
+        source_path = os.path.join('app', 'static', cat.image_path)
+        file_name = os.path.basename(cat.image_path)
+        destination_dir = os.path.join('app', 'static', 'CatsImages')
+        destination_path = os.path.join(destination_dir, file_name)
+
+        os.makedirs(destination_dir, exist_ok=True)
+        shutil.copyfile(source_path, destination_path)
+
+        new_image = Image(path=file_name)
+        db.session.add(new_image)
+
+    elif action == 'отклонить':
+        cat.status = 'отклонён'
+
     db.session.commit()
     return jsonify({'success': True})
 
