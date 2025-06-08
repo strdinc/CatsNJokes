@@ -6,7 +6,6 @@ services:
     container_name: flask_app
     volumes:
       - .:/app
-      # Монтируем статику, чтобы изменения сразу применялись
       - ./app/static:/app/app/static
     ports:
       - "5000:5000"
@@ -21,7 +20,14 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./certs:/etc/nginx/certs
-      - ./app/static:/usr/share/nginx/html/static
+      - cats_images:/usr/share/nginx/html/static/CatsImages
+      - user_uploads:/usr/share/nginx/html/static/uploads
     depends_on:
       - web
     restart: unless-stopped
+
+volumes:
+  cats_images:
+  user_uploads:
+  db_volume:
+

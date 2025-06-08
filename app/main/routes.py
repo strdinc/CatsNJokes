@@ -66,12 +66,4 @@ def get_day_joke():
     joke = Joke.query.order_by(func.random()).first()
     return jsonify({'text': joke.text})
 
-@main.route('/health')
-def health_check():
-    try:
-        # Проверка подключения к БД
-        db.session.execute('SELECT 1')
-        return jsonify({'status': 'healthy'}), 200
-    except Exception as e:
-        return jsonify({'status': 'unhealthy', 'error': str(e)}), 500
 
