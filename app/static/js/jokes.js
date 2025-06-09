@@ -53,7 +53,6 @@ async function loadContent(page) {
             }, delay);
         });
 
-        scrollToTop();
     } catch (error) {
         console.error('Ошибка загрузки контента:', error);
     }
