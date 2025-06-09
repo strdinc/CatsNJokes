@@ -9,6 +9,7 @@ from . import auth
 import uuid
 from flask import jsonify
 import shutil
+import re
 
 UPLOAD_FOLDER = 'app/static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
@@ -271,4 +272,15 @@ def register():
             db.session.commit()
             return redirect(url_for('auth.login'))
 
-    return render_template('register.html', error=error)
+    def index():
+        user_agent = request.headers.get('User-Agent')
+        if is_mobile(user_agent):
+            return render_template('register_mobile.html')
+        else:
+            return render_template('register.html')
+
+    def is_mobile(user_agent):
+        mobile_keywords = ['Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone']
+        if user_agent:
+            return any(keyword in user_agent for keyword in mobile_keywords)
+        return False
