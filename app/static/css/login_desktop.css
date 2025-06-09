@@ -1,4 +1,5 @@
-.center_container {
+@media screen and (min-width: 600px) {
+    .center_container {
     max-width: 1920px;
     width: 100%;
     margin: 0 auto;
@@ -96,4 +97,7 @@
     box-sizing: border-box;
     align-content: center;
 }
+}
+
+
 
