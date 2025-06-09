@@ -166,7 +166,7 @@ function loadCategories() {
 
 // Скролл к началу
 function scrollToTop() {
-    const container = document.querySelector('.CatNJokesContainer');
+    const container = document.querySelector('.leftColumn');
     if (container) {
         const rect = container.getBoundingClientRect();
         const scrollY = window.scrollY || window.pageYOffset;
