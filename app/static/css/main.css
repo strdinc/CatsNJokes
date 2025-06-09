@@ -33,12 +33,12 @@ button {
 
 .center_container_jokes {
     position: relative;
-    margin: 0 auto;
     height: auto;
-    width: 1920px;
+    max-width: 1920px;
+    width: 100%;
     padding: 50px;
     box-sizing: border-box;
-    margin-bottom: 200px;
+    margin: 0 auto 200px;
 }
 
 .titleBlock {

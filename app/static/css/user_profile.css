@@ -1,6 +1,7 @@
 .center_container {
     height: 120vh;
-    width: 1920px;
+    max-width: 1920px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
