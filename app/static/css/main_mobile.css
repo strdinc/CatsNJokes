@@ -1,0 +1,93 @@
+@media screen and (max-width: 600px) {
+    html {
+        overflow-x: hidden;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: opacity, transform;
+    }
+
+    .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .firstScreen {
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+    .center_container_jokes {
+        position: relative;
+        height: auto;
+        width: 100%;
+        padding: 50px;
+        box-sizing: border-box;
+        margin: 0 auto 200px;
+    }
+
+    .titleBlock {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+}
+
+.titleCatsNJokes {
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-top: auto;
+    font-size: 65px;
+    line-height: 111.5%;
+    color: white;
+}
+
+.titleDownLine {
+    height: auto;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.toLogin {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: auto auto 0 0;
+    border-radius: 30px;
+    background-color: white;
+    color: #3A2E5D;
+    display: flex;
+    text-align: center;
+    vertical-align: center;
+    font-size: 22px;
+    line-height: 111.5%;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.authors {
+    color: white;
+    font-size: 14px;
+    line-height: 130%;
+    margin-right: 0;
+    margin-left: auto;
+}
+}

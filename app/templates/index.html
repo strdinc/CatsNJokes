@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/full_moon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_mobile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full_moon_desktop.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full_moon_mobile.css') }}">
 {% endblock %}
 
 {% block content %}
