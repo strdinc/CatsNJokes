@@ -250,7 +250,6 @@ def logout():
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
-    error = None
     if request.method == 'POST':
         name = request.form.get('name')
         username = request.form.get('username')
@@ -272,15 +271,14 @@ def register():
             db.session.commit()
             return redirect(url_for('auth.login'))
 
-    def index():
-        user_agent = request.headers.get('User-Agent')
-        if is_mobile(user_agent):
-            return render_template('register_mobile.html')
-        else:
-            return render_template('register.html')
+    user_agent = request.headers.get('User-Agent')
+    if is_mobile(user_agent):
+        return render_template('register_mobile.html')
+    else:
+        return render_template('register.html')
 
-    def is_mobile(user_agent):
-        mobile_keywords = ['Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone']
-        if user_agent:
-            return any(keyword in user_agent for keyword in mobile_keywords)
-        return False
+def is_mobile(user_agent):
+    mobile_keywords = ['Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone']
+    if user_agent:
+           return any(keyword in user_agent for keyword in mobile_keywords)
+    return False
