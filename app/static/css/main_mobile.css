@@ -50,10 +50,10 @@
 
     .titleBlock {
         position: relative;
-        height: 90vh;
+        height: 75vh;
         display: flex;
         flex-direction: column;
-        margin-bottom: 80px;
+        margin-bottom: 210px;
     }
 
     .titleCatsNJokes {
