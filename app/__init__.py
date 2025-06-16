@@ -14,9 +14,11 @@ def create_app():
 
     from .main import main as main_bp
     from .auth import auth as auth_bp
+    from .api import api as api_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(api_bp)
 
     db.init_app(app)
 
