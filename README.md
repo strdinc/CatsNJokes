@@ -1,8 +1,4 @@
-<img alt="Flask" src="https://img.shields.io/badge/Flask-3.1.1-orange"/>
-<img alt="gunicorn" src="https://img.shields.io/badge/gunicorn-23.0.0-purple"/>
-<img alt="Jinja2" src="https://img.shields.io/badge/Jinja2-3.1.6-red"/>
-<img alt="SQLAlchemy" src="https://img.shields.io/badge/SQLAlchemy-2.0.41-blueviolet"/>
-<img alt="Werkzeug" src="https://img.shields.io/badge/Werkzeug-3.1.3-lightblue"/>
+<img alt="Flask" src="https://img.shields.io/badge/Flask-3.1.1-orange"/><img alt="gunicorn" src="https://img.shields.io/badge/gunicorn-23.0.0-purple"/><img alt="Jinja2" src="https://img.shields.io/badge/Jinja2-3.1.6-red"/><img alt="SQLAlchemy" src="https://img.shields.io/badge/SQLAlchemy-2.0.41-blueviolet"/><img alt="Werkzeug" src="https://img.shields.io/badge/Werkzeug-3.1.3-lightblue"/>
 
 
 # CatsNJokes
